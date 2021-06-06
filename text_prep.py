@@ -5,7 +5,7 @@ f = open('frankenstein.txt', encoding="utf8")
 text= f.read()
 
 def prepare_text(book):
-    t = str(t)
+    t = str(book)
     start = t.find('***') + 3
     d = t[c:]
     start1 = d.find('***') + 3
