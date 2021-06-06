@@ -6,3 +6,22 @@ h1 {
 	color: rgb(250,128,114);
     font: italic small-caps bold 45px sans-serif;
 }
+
+h2 {
+	color: rgb(250,128,114);
+    font: italic small-caps bold sans-serif;
+}
+
+ul {
+	color: black;
+	font-family: Lucida Handwriting, cursive;
+	border-color: peachpuff;
+	border-style: solid;
+	border-width: thick;
+	padding-right: 25px;
+}
+
+.section {
+	display: flex;
+	border-bottom: 2px solid #8D99AE;
+} 
