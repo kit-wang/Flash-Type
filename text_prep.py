@@ -7,14 +7,14 @@ text= f.read()
 def prepare_text(book):
     t = str(book)
     start = t.find('***') + 3
-    d = t[c:]
+    d = t[start:]
     start1 = d.find('***') + 3
     end = d.find('*** END OF THE PROJECT')
     t = d[start1:end]
     
     s = t.split()
     s = ' '.join(s)
-    b = ""
+    final = ""
     
     for letter in s:
         
