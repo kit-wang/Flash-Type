@@ -30,4 +30,4 @@ def sentences(text, count):
     new = list(map(str, text.split()))
     l += str(random.choice(new))
     return(l)
-print(sentences(bug_text, 10))
+print(sentences(text, 10))
