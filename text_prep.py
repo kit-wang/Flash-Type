@@ -22,7 +22,7 @@ def prepare_text(book):
             final += letter
     return final
   
-print (prepare_text(text))
+typetext = prepare_text(text))
 
 def sentences(text, count):
     new = []
@@ -34,4 +34,4 @@ def sentences(text, count):
         i += 1
     l = ' '.join(l) 
     return(l)
-print(sentences(text, 10))
+print(sentences(typetext, 10))
