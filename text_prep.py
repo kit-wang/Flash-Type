@@ -23,3 +23,8 @@ def prepare_text(book):
     return final
   
 print (prepare_text(text))
+
+def sentences(text, count):
+    new = []
+    new = list(map(str, text.split()))
+    return(random.choice(new))
