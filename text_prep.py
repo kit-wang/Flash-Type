@@ -32,6 +32,6 @@ def sentences(text, count):
     while i < random.randrange(count):
         l += [random.choice(new)]
         i += 1
-    l = ''.join(l) 
+    l = ' '.join(l) 
     return(l)
 print(sentences(text, 10))
