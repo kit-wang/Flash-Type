@@ -27,7 +27,11 @@ print (prepare_text(text))
 def sentences(text, count):
     new = []
     l = []
+    i = 0
     new = list(map(str, text.split()))
-    l += str(random.choice(new))
+    while i < random.randrange(count):
+        l += [random.choice(new)]
+        i += 1
+    l = ''.join(l) 
     return(l)
 print(sentences(text, 10))
