@@ -25,3 +25,7 @@ ul {
 	display: flex;
 	border-bottom: 2px solid #8D99AE;
 } 
+
+.fit-picture {
+	height: 300px;
+}
