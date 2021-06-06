@@ -26,5 +26,8 @@ print (prepare_text(text))
 
 def sentences(text, count):
     new = []
+    l = []
     new = list(map(str, text.split()))
-    return(random.choice(new))
+    l += str(random.choice(new))
+    return(l)
+print(sentences(bug_text, 10))
