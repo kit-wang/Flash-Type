@@ -70,7 +70,10 @@ class Game:
             self.wpm = len(self.typed_chars)/(5 * self.total_time / 60)
             self.end = True
             print(self.total_time)
-            freqError = statistics.mode(self.errorList)
+            if len(self.errorList) > 0:
+                freqError = statistics.mode(self.errorList)
+            else:
+                freqError = None
             self.results = f'Most frequent Error: {freqError} Accuracy: {round(self.accuracy)}% Wpm: {round(self.wpm)}'
             # draw icon image
             self.time_img = pygame.image.load('icon.png')
