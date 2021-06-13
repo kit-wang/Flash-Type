@@ -3,21 +3,24 @@ from pygame.locals import *
 import sys
 import time
 import random
+import statistics
 
 class Game:
     def __init__(self):
-        self.w=750
+        self.w=800
         self.h=500
         self.reset=True
         self.active = False
         self.input_text=''
         self.word = ''
+        self.lines = ''
+        self.typed_chars = ''
         self.start_time = 0
         self.total_time = 0
-        self.accuracy = '0%'
-        self.results = 'Time:0 Accuracy:0 % Wpm:0 '
+        self.accuracy = []
         self.wpm = 0
         self.end = False
+        self.errorList = []
         #the following are colors
         self.theme_color = (255,213,200)
         self.text_color = (240,240,100)
@@ -39,38 +42,43 @@ class Game:
         pygame.display.update()
         
     def get_sentence(self):
-        f = open('sentences.txt', encoding='utf8').read()
+        f = open('sentences.txt', encoding='utf-8-sig').read()
         sentences = f.split('\n')
         sentence = random.choice(sentences)
         return sentence
     
-    def show_results(self, screen):
+    def calculate_accuracy(self, screen):
         if(not self.end):
-            #Calculate time
-            self.total_time = time.time() - self.start_time
-            #Calculate accuracy
+            round_percent = 0
             count = 0
-            for i,c in enumerate(self.word):
+            for i, c in enumerate(self.word):
                 try:
-                    if self.input_text[i] != c:
+                    if self.input_text[i] == c:
                         count += 1
+                    else:
+                        self.errorList.append( c )
                 except:
                     pass
-            self.accuracy = count/len(self.word)*100
+            round_percent = count * 100 / len(self.word)
+            self.accuracy.append(round_percent)
             
+            
+    def show_results(self, screen):
+            self.accuracy = sum(self.accuracy) / len(self.accuracy)
             
             #Calculate words per minute
-            self.wpm = len(self.input_text)*60/(5*self.total_time)
+            self.wpm = len(self.typed_chars)/(5 * self.total_time / 60)
             self.end = True
             print(self.total_time)
-            self.results = 'Time: '+str(round(self.total_time)) +" secs Accuracy: "+ str(round(self.accuracy)) + "%" + ' Wpm: ' + str(round(self.wpm))
+            freqError = statistics.mode(self.errorList)
+            self.results = f'Most frequent Error: {freqError} Accuracy: {round(self.accuracy)}% Wpm: {round(self.wpm)}'
             # draw icon image
             self.time_img = pygame.image.load('icon.png')
             self.time_img = pygame.transform.scale(self.time_img, (150,150))
             
             screen.blit(self.time_img, (self.w/2-75,self.h-140))
             self.draw_text(screen,"Reset", self.h - 70, 26, (100,100,100))
-            print(self.results, count)
+            print(self.results)
             pygame.display.update()
             
     def run(self):
@@ -101,11 +109,18 @@ class Game:
                 elif event.type == pygame.KEYDOWN:
                     if self.active and not self.end:
                         if event.key == pygame.K_RETURN:
-                            print(self.input_text)
-                            self.show_results(self.screen)
-                            print(self.results)
-                            self.draw_text(self.screen, self.results,350, 28, self.display_color)
-                            self.end = True
+                            #print(self.input_text)
+                            self.typed_chars += self.input_text
+                            self.lines += self.word
+                            self.total_time += time.time() - self.start_time
+                            self.calculate_accuracy(self.screen)
+                            if self.total_time >= 60:
+                                self.show_results(self.screen)
+                                print(self.results)
+                                self.draw_text(self.screen, self.results,350, 28, self.display_color)
+                                self.end = True
+                            else:
+                                self.new_round()
                         elif event.key == pygame.K_BACKSPACE:
                             self.input_text = self.input_text[:-1]
                         else:
@@ -127,12 +142,31 @@ class Game:
         self.start_time = 0
         self.total_time = 0
         self.wpm = 0
+        self.accuracy = []
         # Get random sentence
         self.word = self.get_sentence()
-        if (not self.word): self.reset_game()
+        if (not self.word):
+            self.reset_game()
         #drawing heading
         self.screen.fill((0,0,0))
         self.screen.blit(self.bg,(0,0))
+        msg = "Typing Speed Test"
+        self.draw_text(self.screen, msg,80, 80,self.theme_color)
+        # draw the rectangle for input box
+        pygame.draw.rect(self.screen,(255,192,25), (50,250,650,50), 2)
+        # draw the sentence string
+        self.draw_text(self.screen, self.word,200, 28,self.text_color)
+        pygame.display.update()
+        
+    def new_round(self):
+        self.input_text=''
+        self.word = ''
+        self.start_time = 0
+        self.word = self.get_sentence()
+        
+        self.screen.fill((0,0,0))
+        self.screen.blit(self.bg,(0,0))
+        
         msg = "Typing Speed Test"
         self.draw_text(self.screen, msg,80, 80,self.theme_color)
         # draw the rectangle for input box
