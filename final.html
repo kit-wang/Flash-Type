@@ -25,7 +25,7 @@
 
 <a id= "Description"><h3> Project Overview/Description </h3> </a>
 <p> 
-Hello! This is the main landing page for Flash Type. Our team, Kit Kat Juice, aims to create a Python program that functions as a typing speed test (with a GUI), which will test how fast the user can type a random paragraph (created through a program like generate_text and displayed one line at a time) based on characters/words per minute. At the start of each “round” of the typing test will have a mini-section that allows the user to choose the next text they will be tested on. At the end of the round, should the user choose to end it, error frequency analysis and the typing speed computations will be displayed (this will be made possible with the `time` module).
+Hello! This is the main landing page for Flash Type. Our team, Kit Kat Juice, aims to create a Python program that functions as a typing speed test (with a GUI), which will test how fast the user can type a random sentence (created through a program like generate_text and displayed one line at a time) based on characters/words per minute. At the end of the round error frequency analysis and the typing speed computations will be displayed (this will be made possible with the `time` module).
 The random sentences generated for the user to test themselves on are taken from various text files from Project Gutenberg.   
 </p>
 <div class = "GUI">
@@ -37,8 +37,8 @@ The random sentences generated for the user to test themselves on are taken from
 <a id= "Instructions"> <h3> Instructions </h3> </a>
 
 <p>
-A typing test measures the test-taker's typing speed and accuracy. Typing tests usually give one or more paragraphs for the typer to copy within a certain time frame.
-Based on how fast the tester is able to copy that passage, and the amount of errors they make while typing it, is summed up as results at the end of the typing test.
+A typing test measures the test-taker's typing speed and accuracy. Typing tests usually give one or more sentences/paragraphs for the typer to copy within a certain time frame.
+The program collects data on how fast the tester is able to copy that passage and the amount of errors they make while typing it. This data is displayed at the end of the typing test.
 Flash Type is a specific typing test that will utilize data analysis and imported modules using Python.
 To play, the program will display the sentence that the user needs to copy. Make sure to click on the black text box before typing. Once the user finishes typing the sentence, 
 click enter to go to the next sentence. This process continues until the typing test is over, when the results of the typing test will then be generated. 
@@ -47,11 +47,11 @@ To sum up the directions:
 </p>
 
 <ol>
-	<li> When the page loads, look at the sentence in yellow. " </li>
+	<li> When the page loads, look at the sentence in colored text. </li>
 	<li> Click on the black text box, to start typing. </li>
 	<li> Type the sentence above to the best of your ability. Press enter when done. </li>
 	<li> The next sentence to practice typing appear. </li>
-	<li> Repeat steps until the typing test is over. </li> 
+	<li> Repeat steps until the typing test is over, when the results will be given. </li> 
 </ol>
 
 <a id= "Works"><h3> How it Works </h3> </a>
@@ -78,6 +78,8 @@ The Time module and program calculations will be based on one line at a time, an
 		<li> final.html : This html file </li>
 		<li> Flashtype.py : The main Python file that makes up the typing portion, using components such as the GUI (explained further in a section below). </li>
 		<li> errors.py : The Python file that calculates the number of errors and percentage accuracy based on the total number of words. </li> 
+		<li> background.jpg : This file serves as the background color of the window when the user is taking the typing test. </li> 
+		<li> icon.png : When the results of the typing test are shown, there is an icon at the bottom, which allows the rounds to be reset so the user can take the test again. </li>
 	</ul>
 <a id = "Resource"> <h3> Resources </h3> </a> 
 	<p> Flash Type uses two Python modules: Pygame and time. </p> 
@@ -100,7 +102,6 @@ The Time module and program calculations will be based on one line at a time, an
 <a id= "bugs"><h3> Bugs/Errors/Things to be Aware of </h3> </a>
 	<ul>
 		<li> Since the sentences are randomly generated, this means that the length of the sentences for each round can vary. While this is to create for a more varied test, this also means some sentences may be of shorter or longer length than others. </li>
-		<li> The timer allows the user to go a few seconds over the time limit (this can lead to slightly imprecise data, but is compensated). </li>
-		 
+		<li> The timer allows the user to go a few seconds over the time limit (this can lead to slightly imprecise data, but is compensated). </li>		 
 	</ul>
 </html>
