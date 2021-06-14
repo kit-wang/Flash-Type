@@ -12,7 +12,7 @@
 <h2> Lin (Kitty) Wang, Kayla Tsui, Justine Kyi Period 5 </h2>
 
 <nav class = "table">		 
-		<nav>  <h3>  Menu/Table of Contents: </h5>  </nav>
+		<nav>  <h3>  Menu/Table of Contents: </h3>  </nav>
 			<ul> <a href = "#Description"> Project Overview </a>  </ul>
 			<ul> <a href= "#Instructions"> How to Use  </a> </ul>
 			<ul> <a href= "#Works"> How it Works </a> </ul> 
@@ -25,13 +25,12 @@
 
 <a id= "Description"><h3> Project Overview/Description </h3> </a>
 <p> 
-Hello! This is the main landing page for Flash Type. Our team, Kit Kat Juice, aims to create a Python program that functions as a typing speed test (with a GUI), which will test how fast the user can type a random sentence (created through a program like generate_text and displayed one line at a time) based on characters/words per minute. At the end of the round error frequency analysis and the typing speed computations will be displayed (this will be made possible with the `time` module).
-The random sentences generated for the user to test themselves on are taken from various text files from Project Gutenberg.   
+Hello! This is the main landing page for Flash Type. Our team, Kit Kat Juice, aims to create a user-friendly Python program that functions as a typing speed test, which will test how fast the user can type a random sentence (created through a program like generate_text and displayed one line at a time) based on words per minute. At the end of the round, error frequency analysis and the typing speed computations will be displayed (this will be made possible with the time module). The random sentences generated for the user to test themselves on are taken from various text files from Project Gutenberg, and every "sentence" displayed for the user to type is randomly sourced from one of three books: <em></em>.   
 </p>
 <div class = "GUI">
 <img class="fit-picture"
-	src="flashtype1.jpg"
-	alt= "Image of the starting menu of Flash Type">
+	src="flashtype1.png"
+	alt= "Image of the starting page of Flash Type">
 </div>
 	
 <a id= "Instructions"> <h3> Instructions </h3> </a>
@@ -40,25 +39,27 @@ The random sentences generated for the user to test themselves on are taken from
 A typing test measures the test-taker's typing speed and accuracy. Typing tests usually give one or more sentences/paragraphs for the typer to copy within a certain time frame.
 The program collects data on how fast the tester is able to copy that passage and the amount of errors they make while typing it. This data is displayed at the end of the typing test.
 Flash Type is a specific typing test that will utilize data analysis and imported modules using Python.
-To play, the program will display the sentence that the user needs to copy. Make sure to click on the black text box before typing. Once the user finishes typing the sentence, 
-click enter to go to the next sentence. This process continues until the typing test is over, when the results of the typing test will then be generated. 
+To play, the program will display the sentence that the user needs to copy. Make sure to click on the black text box before typing. Once the user finishes typing the sentence, click enter to go to the next sentence. This process continues until the typing test is over, when the results of the typing test will then be generated. Flash Type offers one minute long typing rounds at the end of which users receive analyses results based on their input.
 
-To sum up the directions:
+<br> To enjoy your experience with Flash Type:
 </p>
 
 <ol>
-	<li> When the page loads, look at the sentence in colored text. </li>
-	<li> Click on the black text box, to start typing. </li>
-	<li> Type the sentence above to the best of your ability. Press enter when done. </li>
-	<li> The next sentence to practice typing appear. </li>
-	<li> Repeat steps until the typing test is over, when the results will be given. </li> 
+	<li> Peruse the landing load page</li>
+	<li> When the screen has transitioned to the test phase, please click on the black input box to begin the test </li>
+	<li> Type the sentence displayed above the input box in lavender to the best of your ability. Press enter when done. </li>
+	<li> The next sentence to type in will appear, and you may begin typing once again.</li>
+	<li> Repeat steps 3 & 4 until the round is over, when the results will be returned to the user, which consists of one's most frequent error, accuracy, and words per minute typing rate (displayed as "wpm"). </li> 
+	<li> Should the user decide to play another round, they may click the reset button, which takes the form of a keyboard at the bottom of the screen.</li>
 </ol>
 
 <a id= "Works"><h3> How it Works </h3> </a>
-<p> Flash Type will take a randomly generated sentence from one of the chosen texts (see the Files section for more info on the texts used). The user will retype that sentence.
-The program will assess how correct the user's sentence was (such as any errors they made when compared to the original sentence).
-The Time module and program calculations will be based on one line at a time, and this data is then scaled to record wpm (words per minute).
+<p> Flash Type will take a randomly generated sentence from one of the chosen texts (see the Files section for more info on the texts used). The user will retype that sentence. The program will assess how correct the user's sentence was (such as any errors they made when compared to the original sentence).
+The Time module and program calculations will be based on one line at a time, and this data is then scaled to record wpm (words per minute). To accomplish all of this, Flash Type uses a game class and a main() method that maintains the running of the program. To source the words of the sentences, a list containing the three book's filenames are stored and passed into two methods that process the text and generate a new sentence with eight random words from the book. The main() method begins by resetting all variables storing values from the previous round (which are declared in the __init__ step), and initializes the landing page. After 2.7 seconds, the user will be directed to the typing speed test page. All lines of text displayed on the screen are rendered by the two write text functions as the background image is loaded. When the user clicks on the black input box to begin typing, the timer begins and the user's keyboard inputs are stored and updated with every change to render a typewriter-like effect in the input box. When the user completes typing each line, they may enter the return key, which will invoke a new line to be generated and displayed for typing. Meanwhile, the total time is recorded again, as the user input and the sample "sentence" for the previous line are appended to a record keeping string. The accuracy for the line is then calculated and stored in a list, and the overall accuracy is computed at the end of the round (after ~60 seconds have elapsed) as the mean of the list of accuracy rates. 
 </p> 
+<p>
+	At the end of the round, the user will be able to view their most frequent error (the most common character that has been typed incorrectly), holistic accuracy rate, and words per minute rate. A reset button in the form of a keyboard will also be displayed and the position of the user's mouse click will be assessed to determine whether the program will run another round.
+</p>
 	
 <a id= "Files"><h3> Files </h3> </a>
 	<ul>
@@ -85,23 +86,38 @@ The Time module and program calculations will be based on one line at a time, an
 	<p> Flash Type uses two Python modules: Pygame and time. </p> 
 	<ul>
 		<li> 
-		Pygame: The Pygame library was implemented so that there is a user-friendly interface for the program. Since Pygame is generally used for developing games in Python, implementing Pygame into Flash Type would help make the typing test more user-friendly. To see the official Pygame documentation repository,
+		pygame: The pygame library was implemented so that there is a user-friendly interface for the program. Since Pygame is generally used for developing games in Python, implementing Pygame into Flash Type would help make the typing test more user-friendly and vibrant to promote user-program interactions. To see the official Pygame documentation repository,
 		<a href= https://github.com/pygame/pygame> click here. </a>
-		Also, 
-		<a href= https://www.pygame.org/docs/> this website </a>
-		has a general overview of Pygame. 
+		In addition, 
+		<a href= https://www.pygame.org/docs/>this website</a>
+		 has a general overview of pygame references and commands. 
 		</li> 
 		<li> time: The time module will help with determining calculations, such as typing speed, after each round of typing ends. This allows the results at the end of the typing test to be more accurate, such as assessing how much time elapsed throughout the typing rounds.
-		<a href= https://docs.python.org/3/library/time.html> This website </a>
+		<a href= https://docs.python.org/3/library/time.html>This website</a>
 		gives an overview of the time module.
 		</li> 
-		<li> Statistics: This library was imported to find the mode of the erorr list and to find the most frequent error. Information about the statistics can be found
-		<a href = https://docs.python.org/3/library/statistics.html> here. </a>
-		</li> 
+		<li>
+			sys: the sys module has been implemented to manipulate different parts of the Python runtime environment, namely to exit out of the user interface window after a QUIT prompt as been sent. The documentation for
+			<a href= https://docs.python.org/3/library/sys.html#sys.exit>sys</a> can be accessed here. 
+		</li>
 	</ul>
 <a id= "bugs"><h3> Bugs/Errors/Things to be Aware of </h3> </a>
 	<ul>
-		<li> Since the sentences are randomly generated, this means that the length of the sentences for each round can vary. While this is to create for a more varied test, this also means some sentences may be of shorter or longer length than others. </li>
-		<li> The timer allows the user to go a few seconds over the time limit (this can lead to slightly imprecise data, but is compensated). </li>		 
+		<li> 
+			Since the "sentences" that are displayed for the user to type are randomly generated, this means that the length of the words for each line may vary, and repetition of words are thus to be expected. While this may create for a more varied test, this also means some "sentences" may be of shorter or longer length than others. In addition, some words, stemming from the three book sources, may be unique to their authors and unconventional in nature. Some examples are when authors have concentenated multiple words together to form a new adjective or noun.
+		</li>
+		<li> 
+			The timer permits the user to finish typing their current line even after 60 seconds have elapsed, which is compensated during the words per minute calculation process as it accounts for the total time elapsed
+		</li>		 
+		<li>
+			For words including contractions with hypostrophes, such as, I'm and wouldn't, the hypostrophe has been removed for more accurate calculations in the program. Consequently, contracted words will display in a line without a hypostrophe (e.g "Im" and "wouldnt").
+		</li>
+		<li>
+			Because the average word is 4.7 characters long, the words per minute calculation has divided the user's total character count by 4.7 and rounded to the nearest ones place. 
+		</li>
+		<li>
+			Based on testing conducted during the team's finalization phase, there seems to be a difference in resolution of the graphical user interface depending on the resolution and configurations of the user's display or monitor. 
+		</li>
+
 	</ul>
 </html>
