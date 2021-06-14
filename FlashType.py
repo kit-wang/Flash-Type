@@ -115,7 +115,7 @@ class game:
         self.accuracy = sum(self.accuracy) / len(self.accuracy)
             
         # compute words per minute
-        self.wpm = len(self.typed_chars)/(5 * self.total_time / 60)
+        self.wpm = len(self.typed_chars)/(4.7 * self.total_time / 60)
         self.end = True
         # print(self.total_time)
         # determines mode of errorList
