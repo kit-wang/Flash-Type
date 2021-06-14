@@ -16,7 +16,7 @@ h2 {
 
 ul {
 	color: black;
-	font-family: Lucida Handwriting, cursive;
+	font-family: Georgia, serif;
 	border-color: peachpuff;
 	border-style: solid;
 	border-width: thick;
@@ -45,6 +45,7 @@ a:hover {
 p{
 	text-align: center;
 	font-size: 17px;
+	font-family: Georgia, serif;
 }
 
 
